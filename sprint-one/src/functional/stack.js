@@ -14,13 +14,13 @@ var Stack = function() {
   someInstance.pop = function() {
     var value = someInstance[count];
     delete someInstance[count];
-    count--
+    count--;
     return value;
     
   };
 
   someInstance.size = function() {
-    if(count < 0) {
+    if (count < 0) {
       count = 0;
     }
     return count;

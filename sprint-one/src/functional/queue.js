@@ -13,9 +13,8 @@ var Queue = function() {
 
   someInstance.dequeue = function() {
     var value = someInstance[1];
-    delete someInstance[1];
     for (var i in someInstance) {
-        someInstance[count - 1] = someInstance[count];
+      someInstance[count - 1] = someInstance[count];
     }
     delete someInstance[count];
     count--;
@@ -23,7 +22,7 @@ var Queue = function() {
   };
 
   someInstance.size = function() {
-    if (count < 0){
+    if (count < 0) {
       count = 0; 
     }
     return count;
