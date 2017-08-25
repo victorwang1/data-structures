@@ -5,29 +5,22 @@ var LinkedList = function() {
 
   list.addToTail = function(value) {
     var newNode = Node(value);
-    if (list.head === null ) {
-      list.head = newNode;
-    } else {
-      list.tail.next = newNode; 
-    }
+    if (!list.head) list.head = newNode;
+    else list.tail.next = newNode;
     list.tail = newNode;
   };
 
   list.removeHead = function() {
-    var formerHead;
-    if (formerHead = list.head) {
-      list.head = formerHead.next; 
-    }
+    var formerHead = list.head;
+    if (formerHead) list.head = formerHead.next;
     return formerHead.value;
   };
 
   list.contains = function(target) {
-    var curr = list.head;
-    while (curr !== null) {
-      if (curr.value === target) {
-        return true;
-      }
-      curr = curr.next;
+    var node = list.head;
+    while (node !== null) {
+      if (node.value === target) return true;
+      node = node.next;
     }
     return false;
   };
