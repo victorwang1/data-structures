@@ -36,4 +36,34 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });
+
+  it('should execute a callback on every value in a tree using "depthFirstLog"', function() {
+    var array = [];
+    var func = function(value) { array.push(value); };
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.depthFirstLog(func);
+    expect(array).to.eql([5, 2, 3]);
+  });
+
+  it('should handle large dataset', function() {
+        
+    var getRandom = function() { return Math.floor(Math.random() * 100); };
+    var tree = new BinarySearchTree(getRandom());
+    debugger;
+    var treeContent = [];
+    for (var i = 0; i < 100; i++) {
+      var newNode = getRandom();
+      treeContent.push(newNode);
+      tree.insert(newNode);
+    }
+    var passed = treeContent.every(function(value) {
+      return tree.contains(value);
+    });
+
+    expect(passed).to.equal(true);
+    //console.log(tree.depthFirstLog());
+  });
 });
+
+
