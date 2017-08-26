@@ -25,15 +25,13 @@ BinarySearchTree.prototype.contains = function(value) {
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(callback) {
-  var output = [];
-  output.push(callback(this.value));
+  callback(this.value);
   if (this.left !== null) {
-    output = output.concat(this.left.depthFirstLog(callback));
+    this.left.depthFirstLog(callback);
   }
   if (this.right !== null) {
-    output = output.concat(this.right.depthFirstLog(callback));
+    this.right.depthFirstLog(callback);
   }
-  return output;
 };
 
 BinarySearchTree.prototype.getDirection = function(value) {
@@ -42,3 +40,19 @@ BinarySearchTree.prototype.getDirection = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+// var getRandom = function() {
+//   return Math.floor(Math.random() * 100);
+// };
+// var newTree = new BinarySearchTree(getRandom());
+// var treeContent = [];
+// function test() {
+//   for (var i = 0; i < 1000; i++) {
+//     var newNode = getRandom();
+//     treeContent.push(newNode);
+//     newTree.insert(newNode);
+//   }
+// }
+
+// test();
+// console.log(newTree.depthFirstLog());
