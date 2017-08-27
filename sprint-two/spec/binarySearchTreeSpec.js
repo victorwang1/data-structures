@@ -50,7 +50,6 @@ describe('binarySearchTree', function() {
         
     var getRandom = function() { return Math.floor(Math.random() * 100); };
     var tree = new BinarySearchTree(getRandom());
-    debugger;
     var treeContent = [];
     for (var i = 0; i < 100; i++) {
       var newNode = getRandom();

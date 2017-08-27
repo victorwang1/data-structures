@@ -17,8 +17,7 @@ HashTable.prototype.insert = function(k, v) {
 
 HashTable.prototype.retrieve = function(k) {
   var element = this.bucketSearch(k);
-  var tuple = Array.isArray(element[0]) ? false : element;
-  if (tuple[0] === k) return tuple[1];
+  if (element[0] === k) return element[1];
 };
 
 HashTable.prototype.remove = function(k) {
@@ -27,7 +26,7 @@ HashTable.prototype.remove = function(k) {
 
   var bucket = this._storage.get(getIndexBelowMaxForKey(k, this._limit));
   for (var i = 0; i < bucket.length; i++) {
-    if (bucket[i] && bucket[i][0] === k) 
+    if (bucket[i][0] === k) 
       bucket.splice(i, 1);
   }
 };
@@ -36,10 +35,8 @@ HashTable.prototype.bucketSearch = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index) || this._storage.set(index, []);
   for (var tuple of bucket) {
-    if (tuple && tuple[0] === k) {
+    if (tuple[0] === k)
       return tuple;
-      break;
-    }
   }
   return bucket;
 };
